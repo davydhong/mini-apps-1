@@ -1,3 +1,17 @@
+// Add an event Handle to the thead to switch between
+//'Player One's Turn'
+//'Player Two 's Turn
+// Use true vs. false
+
+// Add an event Handle to box elements
+// If true, 'X' is put down
+// If false, 'O' is put down
+// Change the player switch
+
+// At each turn, evaluate who the winner is
+// Need a function to check if there is a winner
+// If there is a winner, table footer should say "Player One is the Winner!"
+// Clear the board when the footer is clicked
 var addEvents = function() {
 	var playerOneTurn = true;
 	var boxArr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
@@ -8,8 +22,11 @@ var addEvents = function() {
 	};
 
 	var turnSwitch = function() {
-		playerOneTurn = !playerOneTurn;
+		if (this.innerHTML === '') {
+			playerOneTurn = !playerOneTurn;
+		}
 		var turnIndicator = document.getElementsByClassName('turnIndicator')[0];
+		debugger;
 		if (playerOneTurn) {
 			turnIndicator.innerText = "Player One's Turn";
 		} else {
@@ -18,10 +35,10 @@ var addEvents = function() {
 	};
 	for (let i = 0; i < boxes.length; i++) {
 		boxes[i].addEventListener('click', function() {
-			turnSwitch();
+			turnSwitch.call(this);
 			markerOX.call(this, playerOneTurn, boxArr);
-			EmptyIfFull(boxes);
 			setTimeout(() => whoIsWinner(boxes), 0);
+			setTimeout(() => EmptyIfFull(boxes), 1);
 		});
 	}
 	/////////////////HELPER FUNCTIONS//////////////
@@ -39,14 +56,14 @@ var addEvents = function() {
 	var EmptyIfFull = function(boardAsDOM) {
 		var boxFull = !boxArr.map(boxRow => !boxRow.includes(0)).includes(false);
 		if (boxFull) {
-			// console.log('boxFull!', boxArr);
 			alert('Draw!');
-			boxArr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
-			for (let i = 0; i < boardAsDOM.length; i++) {
-				boardAsDOM[i].innerText = '';
-			}
+			setTimeout(() => {
+				boxArr = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+				for (let i = 0; i < boardAsDOM.length; i++) {
+					boardAsDOM[i].innerText = '';
+				}
+			}, 0);
 		} else {
-			// console.log('boxNotFull!', boxArr);
 		}
 	};
 
@@ -79,23 +96,9 @@ var addEvents = function() {
 				boardAsDOM[i].innerText = '';
 			}
 		}
+		document.getElementsByClassName('scoreBoard')[0].innerHTML = `${winCounter.X}   :  ${winCounter.O}`;
 	};
 };
-
-// Add an event Handle to the thead to switch between
-//'Player One's Turn'
-//'Player Two 's Turn
-// Use true vs. false
-
-// Add an event Handle to box elements
-// If true, 'X' is put down
-// If false, 'O' is put down
-// Change the player switch
-
-// At each turn, evaluate who the winner is
-// Need a function to check if there is a winner
-// If there is a winner, table footer should say "Player One is the Winner!"
-// Clear the board when the footer is clicked
 
 var transpose = function(matrix) {
 	var newMatrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];

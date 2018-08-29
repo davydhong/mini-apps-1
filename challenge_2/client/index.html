@@ -1,2 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+  <title>JSON-to-CSV Converter</title>
+  <style>
+    body {
+      font-family: 'Asap', sans-serif;
+    }
 
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    input {
+      font-size: 30px;
+      color: blue;
+    }
+  </style>
+</head>
+
+<body style="margin: auto;width: 100%;text-align: center;">
+  <h1>JSON-to-CSV Converter</h1>
+  <form action="/POST" id="jsonForm">
+    <textarea type="json" name="s" placeholder='{
+      "firstName": "Joshie",
+      "lastName": "Wyattson",
+      "county": "San Mateo",
+      "city": "San Mateo",
+      "role": "Broker",
+      "sales": 1000000,
+      "children": [
+        {
+          "firstName": "Beth Jr.",
+          "lastName": "Johnson",
+          "county": "San Mateo",
+          "city": "Pacifica",
+          "role": "Manager",
+          "sales": 2900000,
+          "children": [
+            {
+              "firstName": "Smitty",
+              "lastName": "Won",
+              "county": "San Mateo",
+              "city": "Redwood City",
+              "role": "Sales Person",
+              "sales": 4800000,
+              "children": []
+            },
+            {
+              "firstName": "Allen",
+              "lastName": "Price",
+              "county": "San Mateo",
+              "city": "Burlingame",
+              "role": "Sales Person",
+              "sales": 2500000,
+              "children": []
+            }
+          ]
+        },
+        {
+          "firstName": "Beth",
+          "lastName": "Johnson",
+          "county": "San Francisco",
+          "city": "San Francisco",
+          "role": "Broker/Sales Person",
+          "sales": 7500000,
+          "children": []
+        }
+      ]
+    }
+    ' style="width: 500px; height: 200px;" id="input"></textarea>
+    </br>
+    <input type="submit" value="CONVERT TO CSV, CLICK TO TRY!">
+  </form>
+  </br>
+  </br>
+  <div class="csv" style="white-space: pre-wrap;"></div>
+  <script src="app.js"></script>
+</body>
+
+</html>

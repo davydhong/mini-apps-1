@@ -47,33 +47,24 @@ var transpose = function(matrix) {
 
 var diagOfMatrix = function(matrix) {
 	var majorDiagonals = {};
-	for (let i = -(matrix[0].length - 1); i < matrix.length; i++) {
-		var targetMajor = i;
-		for (let j = 0; j < matrix.length; j++) {
-			for (let k = 0; k < matrix[j].length; k++) {
-				if (j - k === targetMajor) {
-					majorDiagonals[`${targetMajor}Ma`] = majorDiagonals[`${targetMajor}Ma`] || [];
-					majorDiagonals[`${targetMajor}Ma`].push(matrix[j][k]);
-				}
-			}
-		}
-	}
-
 	var minorDiagonals = {};
-	for (let i = 0; i < matrix.length + matrix[0].length - 1; i++) {
-		var targetMinor = i;
+	var MajorRange = [-(matrix[0].length - 1), matrix.length];
+	var MinorRange = [0, matrix.length + matrix[0].length - 1];
+	for (let i = MajorRange[0]; i < MinorRange[1]; i++) {
 		for (let j = 0; j < matrix.length; j++) {
 			for (let k = 0; k < matrix[j].length; k++) {
-				if (j + k === targetMinor) {
-					minorDiagonals[`${targetMinor}mi`] = minorDiagonals[`${targetMinor}mi`] || [];
-					minorDiagonals[`${targetMinor}mi`].push(matrix[j][k]);
+				if (j - k === i && MajorRange[0] <= i && i < MajorRange[1]) {
+					majorDiagonals[`${i}Ma`] = majorDiagonals[`${i}Ma`] || [];
+					majorDiagonals[`${i}Ma`].push(matrix[j][k]);
+				}
+				if (j + k === i && MinorRange[0] <= i && i < MinorRange[1]) {
+					minorDiagonals[`${i}mi`] = minorDiagonals[`${i}mi`] || [];
+					minorDiagonals[`${i}mi`].push(matrix[j][k]);
 				}
 			}
 		}
 	}
-
-	var allDiagonals = { ...majorDiagonals, ...minorDiagonals };
-	return Object.values(allDiagonals);
+	return Object.values({ ...majorDiagonals, ...minorDiagonals });
 };
 
 var checkWinner = function(matrix, callback) {

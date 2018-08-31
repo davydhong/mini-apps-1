@@ -52,27 +52,37 @@ class App extends React.Component {
 		});
 		this.render();
 	}
+	handleSubmit(event) {
+		console.log(event.target);
+		alert('Board was updated!');
+		event.preventDefault();
+	}
+
 	render() {
 		var arr = [];
 		for (let i = 0; i < this.state.rows; i++) {
 			arr[i] = <Row rowAsArr={this.state.board[i]} type={'grid_row'} row={i} col={this.state.cols} />;
 		}
 		return (
-			<div className="grid">
-				<Row
-					type={'grid_placer'}
-					handlePlacerMouseEnter={this.handlePlacerMouseEnter}
-					handlePlacerMouseLeave={this.handlePlacerMouseLeave}
-					handlePlaceDisc={this.handlePlaceDisc}
-					col={this.state.cols}
-				/>
-				{arr}
-				<br />
-				<form className="boardChange">
-					Change Board Size
-					<input name="rows" value={this.state.value} onChange={this.handleChangeBoardSize} />
-					<input name="cols" value={this.state.value} onChange={this.handleChangeBoardSize} />
-				</form>
+			<div>
+				<h1>Connect Four!</h1>
+				<div className="grid">
+					<Row
+						type={'grid_placer'}
+						handlePlacerMouseEnter={this.handlePlacerMouseEnter}
+						handlePlacerMouseLeave={this.handlePlacerMouseLeave}
+						handlePlaceDisc={this.handlePlaceDisc}
+						col={this.state.cols}
+					/>
+					{arr}
+					<br />
+					<form className="boardChange" onSubmit={this.handleSubmit}>
+						Change Board Size
+						<input name="rows" value={this.state.value} placeholder="row count" onChange={this.handleChangeBoardSize} />
+						<input name="cols" value={this.state.value} placeholder="column count" onChange={this.handleChangeBoardSize} />
+						<input type="submit" value="Submit" />
+					</form>
+				</div>
 			</div>
 		);
 	}

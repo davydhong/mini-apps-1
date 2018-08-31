@@ -1,43 +1,46 @@
 body {
 	background: white;
+	margin: auto;
+	align-content: center;
+	text-align: center;
+	font-family: 'Baloo Tammudu';
+}
+
+h1 {
+	margin: 5px;
+	font-size: 40px;
 }
 
 .grid_row {
 	background: #3e6698;
 	display: block;
-	height: 50px;
+	height: 70px;
 	align-content: space-around;
 	margin: auto;
 }
 .grid_placer {
 	background: lightgray;
 	display: block;
-	height: 50px;
+	height: 70px;
+	width: auto;
+	border-radius: 10px 10px 0px 0px;
 }
 
 .col {
 	background: white;
 	padding: 5px 5px 5px 5px;
 	margin: 5px 5px 5px 5px;
-	display: inline;
-	border-radius: 50px;
+	display: inline-block;
 	vertical-align: middle;
+	height: 50px;
+	width: 50px;
+	border-radius: 50px;
 }
 
 .col.red {
 	background: red;
-	padding: 5px 5px 5px 5px;
-	margin: 5px 5px 5px 5px;
-	display: inline;
-	border-radius: 50px;
-	vertical-align: middle;
 }
 
 .col.blue {
 	background: blue;
-	padding: 5px 5px 5px 5px;
-	margin: 5px 5px 5px 5px;
-	display: inline;
-	border-radius: 50px;
-	vertical-align: middle;
 }

@@ -1,0 +1,32 @@
+{
+	"name": "multi-step-checkout",
+	"version": "1.0.0",
+	"description": "shopping cart app",
+	"main": "server.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon --inspect ./server.js",
+		"page": "babel client --watch --out-dir public/compiled  --presets=@babel/env,@babel/react"
+	},
+	"dependencies": {
+		"nodemon": "latest"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.0.0",
+		"@babel/core": "^7.0.0",
+		"@babel/preset-env": "latest",
+		"@babel/preset-react": "latest",
+		"babel-watch": "^2.0.7",
+		"body-parser": "^1.18.3",
+		"express": "latest",
+		"mongodb": "^3.1.4",
+		"mongoose": "^5.2.10",
+		"react": "latest",
+		"react-dom": "latest"
+	},
+	"keywords": [
+		"shopping-cart"
+	],
+	"author": "David Hong",
+	"license": "ISC"
+}

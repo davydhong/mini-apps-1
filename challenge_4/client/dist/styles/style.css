@@ -1,0 +1,43 @@
+body {
+	background: white;
+}
+
+.grid_row {
+	background: #3e6698;
+	display: block;
+	height: 50px;
+	align-content: space-around;
+	margin: auto;
+}
+.grid_placer {
+	background: lightgray;
+	display: block;
+	height: 50px;
+}
+
+.col {
+	background: white;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	display: inline;
+	border-radius: 50px;
+	vertical-align: middle;
+}
+
+.col.red {
+	background: red;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	display: inline;
+	border-radius: 50px;
+	vertical-align: middle;
+}
+
+.col.blue {
+	background: blue;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	display: inline;
+	border-radius: 50px;
+	vertical-align: middle;
+}

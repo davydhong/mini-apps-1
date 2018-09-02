@@ -9,7 +9,7 @@ class App extends React.Component {
 			RedTurn: true,
 			rows: 7,
 			cols: 10,
-			board: [],
+			board: []
 		};
 		var boardInit = this.state.board;
 		for (let i = 0; i < this.state.rows; i++) {
@@ -44,11 +44,11 @@ class App extends React.Component {
 	handleChangeBoardSize(event) {
 		console.log(event.target.name, event.target.value);
 		this.setState({
-			[event.target.name]: event.target.value,
+			[event.target.name]: event.target.value
 		});
 		var newBoard = makeNewBoard(this.state.rows, this.state.cols);
 		this.setState({
-			board: newBoard,
+			board: newBoard
 		});
 		this.render();
 	}

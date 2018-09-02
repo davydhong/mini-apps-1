@@ -1,37 +1,37 @@
 {
-	"name": "connect_4",
-	"version": "1.0.0",
-	"description": "Making connect 4 with react",
-	"author": "David Hong <davydhong@gmail.com>",
-	"license": "UNLICENSED",
-	"scripts": {
-		"page": "live-server --open=./dist/index.html --port=3000",
-		"start": "nodemon server.js",
-		"react-dev": "webpack -d --watch"
-	},
-	"dependencies": {
-		"@babel/cli": "latest",
-		"@babel/core": "latest",
-		"@babel/preset-env": "latest",
-		"@babel/preset-react": "latest",
-		"bootstrap": "latest",
-		"express": "latest",
-		"jquery": "^2.2.1",
-		"lodash": "^4.6.1",
-		"popper.js": "^1.12.9",
-		"react": "^15.6.1",
-		"react-dom": "^15.4.2",
-		"react-motion": "^0.5.2"
-	},
-	"devDependencies": {
-		"babel-loader": "latest",
-		"chai": "^3.5.0",
-		"enzyme": "2.8.2",
-		"exports-loader": "0.6.4",
-		"react-dom": "0.14.9",
-		"sinon": "1.15.4",
-		"uglifyjs-webpack-plugin": "0.4.3",
-		"webpack": "latest",
-		"webpack-cli": "^3.1.0"
-	}
+  "name": "connect_4",
+  "version": "1.0.0",
+  "description": "Making connect 4 with react",
+  "author": "David Hong <davydhong@gmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "page": "live-server --open=./dist/index.html --port=3000",
+    "start": "nodemon server.js",
+    "react-dev": "webpack -d --watch"
+  },
+  "dependencies": {
+    "@babel/cli": "latest",
+    "@babel/core": "latest",
+    "@babel/preset-env": "latest",
+    "@babel/preset-react": "latest",
+    "bootstrap": "latest",
+    "express": "latest",
+    "jquery": "^2.2.1",
+    "lodash": "^4.6.1",
+    "popper.js": "^1.12.9",
+    "react": "^15.6.1",
+    "react-dom": "^15.4.2",
+    "react-motion": "^0.5.2"
+  },
+  "devDependencies": {
+    "babel-loader": "latest",
+    "chai": "^3.5.0",
+    "enzyme": "2.8.2",
+    "exports-loader": "0.6.4",
+    "react-dom": "0.14.9",
+    "sinon": "1.15.4",
+    "uglifyjs-webpack-plugin": "0.4.3",
+    "webpack": "latest",
+    "webpack-cli": "^3.1.0"
+  }
 }

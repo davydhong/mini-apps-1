@@ -1,19 +1,19 @@
 {
-	"name": "csv_report_generator",
-	"version": "1.0.0",
-	"description": "single-page client-server app",
-	"main": "server.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "nodemon ./server/server.js"
-	},
-	"devDependencies": {
-		"express": "^4.16.3",
-		"nodemon": "latest"
-	},
-	"author": "David Hong",
-	"license": "ISC",
-	"dependencies": {
-		"body-parser": "^1.18.3"
-	}
+  "name": "csv_report_generator",
+  "version": "1.0.0",
+  "description": "single-page client-server app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server/server.js"
+  },
+  "devDependencies": {
+    "express": "^4.16.3",
+    "nodemon": "latest"
+  },
+  "author": "David Hong",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3"
+  }
 }

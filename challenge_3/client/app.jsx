@@ -27,6 +27,7 @@ class App extends React.Component {
     });
   }
   render() {
+    // view stores all the pages in array. the state determines which page will be played.
     var views = [<F0 />, <F1 handleNextFields={this.handleNextFields} />, <F2 handleNextFields={this.handleNextFields} />, <F3 handleFinish={this.handleFinish} />];
     var toView = views[this.state.view];
     return (
@@ -43,8 +44,11 @@ class App extends React.Component {
 var postViaAxios = function(event, callback) {
   event.preventDefault();
   var dataToSend = {};
+  // event.target returns the form DOM
   dataToSend.page = event.target.id;
+  // selects all the input fields that is not type=submit
   var dataFields = event.target.querySelectorAll("input:not([type='submit'])");
+  // takes the data from the fields and puts them into the object.
   for (var i = 0; i < dataFields.length; i++) {
     dataToSend[dataFields[i].name] = dataFields[i].value;
   }

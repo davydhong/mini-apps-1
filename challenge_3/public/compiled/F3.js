@@ -1,7 +1,10 @@
 "use strict";
 
 var F3 = function F3(props) {
-  return React.createElement("form", null, "Credit Card #", React.createElement("input", {
+  return React.createElement("form", {
+    id: "F3",
+    onSubmit: props.handleFinish
+  }, "Credit Card #", React.createElement("input", {
     name: "card_number",
     placeholder: "####-####-####-####"
   }), React.createElement("br", null), "Exp", React.createElement("input", {
@@ -16,7 +19,8 @@ var F3 = function F3(props) {
   }), React.createElement("br", null), "Zip", React.createElement("input", {
     name: "billing_zip",
     placeholder: "Zip"
-  }), React.createElement("br", null), React.createElement("button", {
-    onClick: props.handleFinish
-  }, "Finish"));
+  }), React.createElement("br", null), React.createElement("input", {
+    type: "submit",
+    value: "Finish"
+  }));
 };

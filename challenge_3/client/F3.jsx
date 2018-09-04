@@ -1,5 +1,5 @@
 var F3 = props => (
-  <form>
+  <form id="F3" onSubmit={props.handleFinish}>
     Credit Card #<input name="card_number" placeholder="####-####-####-####" />
     <br />
     Exp
@@ -11,6 +11,6 @@ var F3 = props => (
     Zip
     <input name="billing_zip" placeholder="Zip" />
     <br />
-    <button onClick={props.handleFinish}>Finish</button>
+    <input type="submit" value="Finish" />
   </form>
 );

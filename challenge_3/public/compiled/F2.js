@@ -1,7 +1,10 @@
 "use strict";
 
 var F2 = function F2(props) {
-  return React.createElement("form", null, "Address Line1", React.createElement("input", {
+  return React.createElement("form", {
+    id: "F2",
+    onSubmit: props.handleNextFields
+  }, "Address Line1", React.createElement("input", {
     name: "address_line1",
     placeholder: "Address Line1"
   }), React.createElement("br", null), "Address Line2", React.createElement("input", {
@@ -18,7 +21,8 @@ var F2 = function F2(props) {
     placeholder: "Zip"
   }), React.createElement("br", null), "Phone Number", React.createElement("input", {
     placeholder: "Phone Number"
-  }), React.createElement("br", null), React.createElement("button", {
-    onClick: props.handleNextFields
-  }, "Next"));
+  }), React.createElement("br", null), React.createElement("input", {
+    type: "submit",
+    value: "next"
+  }));
 };

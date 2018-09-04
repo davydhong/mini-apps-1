@@ -30,38 +30,56 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
-      view: 0
+      view: 0,
+      tempID: ''
     };
     _this.handleNextFields = _this.handleNextFields.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleCheckOut = _this.handleCheckOut.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.handleFinish = _this.handleFinish.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
-  }
+  } // this handle pertains to the inital page
+
 
   _createClass(App, [{
-    key: "handleNextFields",
-    value: function handleNextFields() {
-      this.setState({
-        view: this.state.view + 1
-      });
-    }
-  }, {
     key: "handleCheckOut",
     value: function handleCheckOut() {
       this.setState({
         view: 1
       });
-    }
+    } // this handle pertains to the F1, and F2 pages
+
+  }, {
+    key: "handleNextFields",
+    value: function handleNextFields(event) {
+      var _this2 = this;
+
+      postViaAxios.call(this, event, function (response) {
+        _this2.setState({
+          view: _this2.state.view + 1
+        });
+
+        if (!!response.data) _this2.setState({
+          tempID: response.data
+        });
+      });
+    } // this handle pertains to F3 page, returns to F0
+
   }, {
     key: "handleFinish",
-    value: function handleFinish() {
-      this.setState({
-        view: 0
+    value: function handleFinish(event) {
+      var _this3 = this;
+
+      postViaAxios.call(this, event, function (response) {
+        _this3.setState({
+          tempID: '',
+          view: 0
+        });
       });
     }
   }, {
     key: "render",
     value: function render() {
+      // view stores all the pages in array. the state determines which page will be played.
       var views = [React.createElement(F0, null), React.createElement(F1, {
         handleNextFields: this.handleNextFields
       }), React.createElement(F2, {
@@ -70,7 +88,6 @@ function (_React$Component) {
         handleFinish: this.handleFinish
       })];
       var toView = views[this.state.view];
-      console.log(this.state.view);
       return React.createElement("div", null, React.createElement("div", null, React.createElement(CheckOut, {
         handleCheckOut: this.handleCheckOut
       })), toView);
@@ -79,3 +96,24 @@ function (_React$Component) {
 
   return App;
 }(React.Component);
+
+var postViaAxios = function postViaAxios(event, callback) {
+  event.preventDefault();
+  var dataToSend = {}; // event.target returns the form DOM
+
+  dataToSend.page = event.target.id; // selects all the input fields that is not type=submit
+
+  var dataFields = event.target.querySelectorAll("input:not([type='submit'])"); // takes the data from the fields and puts them into the object.
+
+  for (var i = 0; i < dataFields.length; i++) {
+    dataToSend[dataFields[i].name] = dataFields[i].value;
+  }
+
+  var app = this;
+  if (!!app.state.tempID) dataToSend.objectId = app.state.tempID;
+  axios.post('/post', dataToSend).then(function (response) {
+    callback(response);
+  }).catch(function (error) {
+    console.log(error);
+  });
+};

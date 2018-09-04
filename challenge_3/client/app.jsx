@@ -2,26 +2,33 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 0
+      view: 0,
+      tempID: ''
     };
     this.handleNextFields = this.handleNextFields.bind(this);
     this.handleCheckOut = this.handleCheckOut.bind(this);
     this.handleFinish = this.handleFinish.bind(this);
   }
-  handleNextFields() {
-    this.setState({ view: this.state.view + 1 });
-  }
+  // this handle pertains to the inital page
   handleCheckOut() {
     this.setState({ view: 1 });
   }
-  handleFinish() {
-    this.setState({ view: 0 });
+  // this handle pertains to the F1, and F2 pages
+  handleNextFields(event) {
+    postViaAxios.call(this, event, response => {
+      this.setState({ view: this.state.view + 1 });
+      if (!!response.data) this.setState({ tempID: response.data });
+    });
+  }
+  // this handle pertains to F3 page, returns to F0
+  handleFinish(event) {
+    postViaAxios.call(this, event, response => {
+      this.setState({ tempID: '', view: 0 });
+    });
   }
   render() {
     var views = [<F0 />, <F1 handleNextFields={this.handleNextFields} />, <F2 handleNextFields={this.handleNextFields} />, <F3 handleFinish={this.handleFinish} />];
     var toView = views[this.state.view];
-    console.log(this.state.view);
-
     return (
       <div>
         <div>
@@ -32,3 +39,23 @@ class App extends React.Component {
     );
   }
 }
+
+var postViaAxios = function(event, callback) {
+  event.preventDefault();
+  var dataToSend = {};
+  dataToSend.page = event.target.id;
+  var dataFields = event.target.querySelectorAll("input:not([type='submit'])");
+  for (var i = 0; i < dataFields.length; i++) {
+    dataToSend[dataFields[i].name] = dataFields[i].value;
+  }
+  var app = this;
+  if (!!app.state.tempID) dataToSend.objectId = app.state.tempID;
+  axios
+    .post('/post', dataToSend)
+    .then(function(response) {
+      callback(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+};

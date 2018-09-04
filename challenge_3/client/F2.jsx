@@ -1,5 +1,5 @@
 var F2 = props => (
-  <form>
+  <form id="F2" onSubmit={props.handleNextFields}>
     Address Line1
     <input name="address_line1" placeholder="Address Line1" />
     <br />
@@ -16,6 +16,6 @@ var F2 = props => (
     Phone Number
     <input placeholder="Phone Number" />
     <br />
-    <button onClick={props.handleNextFields}>Next</button>
+    <input type="submit" value="next" />
   </form>
 );
